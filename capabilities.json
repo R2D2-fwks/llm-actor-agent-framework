@@ -1,0 +1,5 @@
+{
+    "Admin Port": 3000,
+    "AllowRemoteActorSources": "Yes",
+    "Thespian ActorSystem Name": "multiprocTCPBase"
+}
