@@ -2,7 +2,8 @@ from agents.orchestrator import messageTypeResolver
 from thespian.actors import Actor
 from model.llama_model import LlamaModel
 from model.model_adapter import ModelAdapter
-
+from thespian.troupe import troupe
+@troupe(max_count=10, idle_count=3)
 class OrchestratorAgent(Actor):
     def __init__(self):
         super().__init__()
