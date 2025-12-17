@@ -3,8 +3,8 @@ from agents.orchestrator.llmResponseValidator import LLMResponseValidator
 from agents.orchestrator.queryMessageValidator import QueryMessageValidator
 
 def checkMessage(context):
-    llm_response_action = LLMResponseValidator()
-    query_message_action = QueryMessageValidator()
-    actor_message_action = ActorMessageValidator()
-    llm_response_action.set_next(query_message_action).set_next(actor_message_action)
-    return llm_response_action.handle(context)
+    llm_response_validator = LLMResponseValidator()
+    query_message_validator = QueryMessageValidator()
+    actor_message_validator = ActorMessageValidator()
+    llm_response_validator.set_next(query_message_validator).set_next(actor_message_validator)
+    return llm_response_validator.handle(context)

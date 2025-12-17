@@ -1,8 +1,8 @@
 from agents.agentRegistry import AgentRegistry
 from agents.greetAgent import GreetAgent
+from agents.orchestrator import OrchestratorAgent
 from messages.query import QueryMessage
 from thespian.actors import ActorSystem
-from agents import OrchestratorAgent
 import json
 
 if __name__ == "__main__":
@@ -15,5 +15,6 @@ if __name__ == "__main__":
         agent_registry.register_agents([GreetAgent])
         response = system.ask(orchestrator_agent_address, query)
         # print(type(response.text))
-        res = json.loads(response.text)
-        print(res["response"])
+        print(response)
+        # res = json.loads(response.text)
+        # print(res["response"])
