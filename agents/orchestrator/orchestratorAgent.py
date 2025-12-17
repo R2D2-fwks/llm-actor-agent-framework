@@ -1,9 +1,7 @@
-from pyexpat import model
+from agents.orchestrator import messageTypeResolver
 from thespian.actors import Actor
 from model.llama_model import LlamaModel
 from model.model_adapter import ModelAdapter
-from agents import AgentRegistry, GreetAgent,IntentAgent
-from messages import LLMResponse
 
 class OrchestratorAgent(Actor):
     def __init__(self):
@@ -18,10 +16,8 @@ class OrchestratorAgent(Actor):
         in turn will connect with data layer agents to get the data and perform the action. And all of these communication will be done via
         this Orchestrator agent."""
     def receiveMessage(self, message, sender):
-        if isinstance(message, str):
-            my_addr = self.myAddress
-            intent_agent_addr = self.createActor(IntentAgent,globalName=self.child_actor)
-            self.send(intent_agent_addr, (message,my_addr))
-        elif
-        else:
-            self.send(sender, "Unknown command. Please send 'greet' to receive a greeting.")
+        orchestrator_address = self.myAddress
+        context=(message,orchestrator_address)
+        response= messageTypeResolver(context)
+
+        
